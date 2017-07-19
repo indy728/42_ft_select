@@ -6,37 +6,30 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 14:22:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/07/12 23:54:54 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/07/18 23:24:11 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void		sl_lstprint(t_arglist *head)
+void		sl_lstprint(t_select *select, t_arglist *head)
 {
-	t_arglist	*scout;
+	t_arglist				*scout;
+	unsigned int			i;
 
 	scout = head;
-	if (scout->ul)
-		tputs(tgetstr("us", NULL), 1, sl_putchar);
-	if (scout->hl)
-		tputs(tgetstr("so", NULL), 1, sl_putchar);
-	ft_printf("%s\n", scout->li);
-	tputs(tgetstr("ue", NULL), 1, sl_putchar);
-	tputs(tgetstr("se", NULL), 1, sl_putchar);
-	scout = scout->next;
 	if (!scout)
 		return ;
-	while (scout != head)
+	i = -1;
+	while (++i < select->ct_li)
 	{
 		if (scout->ul)
-			tputs(tgetstr("us", NULL), 1, sl_putchar);
+			sl_putenvstr(UNDERLINE);
 		if (scout->hl)
-			tputs(tgetstr("so", NULL), 1, sl_putchar);
-		ft_printf("%s\n", scout->li);
+			sl_putenvstr(REVERSE_VIDEO);
+		ft_putendl_fd(scout->li, 2);
 		scout = scout->next;
-		tputs(tgetstr("ue", NULL), 1, sl_putchar);
-		tputs(tgetstr("se", NULL), 1, sl_putchar);
+		sl_putenvstr(EXIT_MODES);
 	}
 }
 
@@ -74,7 +67,7 @@ void		sl_lstpop(t_arglist **head, int key)
 	scout = *head;
 	while (scout->key != key)
 		scout = scout->next;
-	if (scout->key  == (*head)->key)
+	if (scout->key == (*head)->key)
 	{
 		*head = scout->next;
 		if (scout->next)

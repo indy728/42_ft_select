@@ -6,7 +6,7 @@
 #    By: kmurray <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/24 00:13:00 by kmurray           #+#    #+#              #
-#    Updated: 2017/07/12 21:02:14 by kmurray          ###   ########.fr        #
+#    Updated: 2017/07/18 23:28:05 by kmurray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ INC = $(addprefix -I,$(INC_PATH))
 INC_LFT = $(addprefix -I, $(addprefix $(LIBFT_PATH), $(INC_PATH)))
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-SRC_NAME = main.c sl_list.c sl_build_selected.c sl_printfree.c sl_tty.c
+SRC_NAME = main.c sl_list.c sl_build_selected.c sl_printfree.c sl_tty.c\
+		   sl_signals.c sl_globals.c
 
 all: $(NAME)
 

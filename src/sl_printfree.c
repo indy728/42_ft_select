@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 20:39:47 by kmurray           #+#    #+#             */
-/*   Updated: 2017/07/13 00:02:50 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/07/18 21:16:02 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ void	sl_print_selected(t_select *select)
 	ft_putendl(select->selected[i]);
 }
 
-void	sl_free_select(t_select *select)
+void	sl_free_select(void)
 {
+	t_select	*select;
+
+	select = get_select_address();
+	sl_print_selected(select);
 	sl_lstdel(&select->head);
 	ft_del_r(select->selected);
+	free(select);
 }
