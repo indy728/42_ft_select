@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 14:22:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/07/18 23:24:11 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/07/19 14:18:33 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,21 @@ void		sl_lstprint(t_select *select, t_arglist *head)
 	scout = head;
 	if (!scout)
 		return ;
-	i = -1;
-	while (++i < select->ct_li)
+	if (select->winx < select->col_max)
+		ft_putendl_fd(BLUE""BOLD"!!!!!!!!!!!!"RESET, 2);
+	else
 	{
-		if (scout->ul)
-			sl_putenvstr(UNDERLINE);
-		if (scout->hl)
-			sl_putenvstr(REVERSE_VIDEO);
-		ft_putendl_fd(scout->li, 2);
-		scout = scout->next;
-		sl_putenvstr(EXIT_MODES);
+		i = -1;
+		while (++i < select->ct_li)
+		{
+			if (scout->ul)
+				sl_putenvstr(UNDERLINE);
+			if (scout->hl)
+				sl_putenvstr(REVERSE_VIDEO);
+			ft_putendl_fd(scout->li, 2);
+			scout = scout->next;
+			sl_putenvstr(EXIT_MODES);
+		}
 	}
 }
 

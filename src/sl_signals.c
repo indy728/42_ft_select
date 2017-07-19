@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 22:24:52 by kmurray           #+#    #+#             */
-/*   Updated: 2017/07/18 23:24:56 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/07/19 14:48:50 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,14 @@ static void	sl_sigcont(t_select *select)
 	sl_tty_init();
 	sl_putenvstr(CLEAR_WINDOW);
 	sl_lstprint(select, select->head);
-	signal(SIGCONT, SIG_DFL);
+	sl_signals();
 }
 
 static void	sl_sigwinch(t_select *select)
 {
 	sl_getwinsize();
 	sl_putenvstr(CLEAR_WINDOW);
-	if (select->winx < select->col_max)
-	{
-		ft_putendl_fd(RED""BOLD"TOO SMALL!"RESET, 2);
-	}
-	else
-		sl_lstprint(select, select->head);
+	sl_lstprint(select, select->head);
 }
 
 static void	sl_sighandles(int sig)

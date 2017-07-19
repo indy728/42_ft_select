@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 00:30:12 by kmurray           #+#    #+#             */
-/*   Updated: 2017/07/18 23:19:09 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/07/19 00:33:42 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define REVERSE_VIDEO	"mr"
 # define UNDERLINE		"us"
 # define HIDE_CURSOR	"vi"
+# define UP_ONE_LINE	"sr"
 # define RESET_TERM		"te"
 # define EXIT_STANDOUT	"se"
 # define EXIT_MODES		"me"
